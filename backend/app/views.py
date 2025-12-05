@@ -15,9 +15,14 @@ from rest_framework_simplejwt.tokens import RefreshToken
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
+    authentication_classes = []
+    permission_classes = [permissions.AllowAny]
 
 
 class LoginView(APIView):
+    authentication_classes = [] # Disable auth defaults to bypass CSRF check for login
+    permission_classes = [permissions.AllowAny]
+
     def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')

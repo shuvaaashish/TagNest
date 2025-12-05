@@ -25,4 +25,3 @@ class SubmissionAdmin(admin.ModelAdmin):
             return format_html('<img src="{}" width="100" height="100" />'.format(obj.image.url))
         return "-"
     image_tag.short_description = 'Image'
-

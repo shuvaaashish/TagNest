@@ -1,10 +1,10 @@
-from django.urls import path
+from django.urls import path, re_path
 from .views import( RegisterView, LoginView, DatasetListView,   SubmissionListCreateView, DashboardView)
 
 urlpatterns = [
-    path('auth/register/', RegisterView.as_view(), name='register'),
-    path('auth/login/', LoginView.as_view(), name='login'),
-    path('datasets/', DatasetListView.as_view(), name='dataset-list'),
-    path('submissions/', SubmissionListCreateView.as_view(), name='submission-list-create'),
-    path('dashboard/', DashboardView.as_view(), name='dashboard'),
+    re_path(r'^auth/register/?$', RegisterView.as_view(), name='register'),
+    re_path(r'^auth/login/?$', LoginView.as_view(), name='login'),
+    re_path(r'^datasets/?$', DatasetListView.as_view(), name='dataset-list'),
+    re_path(r'^submissions/?$', SubmissionListCreateView.as_view(), name='submission-list-create'),
+    re_path(r'^dashboard/?$', DashboardView.as_view(), name='dashboard'),
 ]
